@@ -57,7 +57,8 @@ a:hover{
 .logo a{
    color: white;
 }
-.menu-control-container{
+
+.menu-control {
     display: none !important;
     position: absolute !important;
     right: 10px !important;
@@ -78,29 +79,17 @@ a:hover{
     .main{
         margin-left: 50px;
     }
-
-    .menu-control-container {
-        display: none !important;
-    }
 }
 
 @media screen and (max-width:1170px){
     .main{
         margin-left: 50px;
     }
-
-    .menu-control-container {
-        display: none !important;
-    }
 }
 
 @media screen and (max-width:1000px){
     .main{
         margin-left: 100px;
-    }
-
-    .menu-control-container {
-        display: none !important;
     }
 }
 
@@ -129,9 +118,9 @@ a:hover{
         background-color: var(--bgSecondary);
     }
   
-    .menu-control-container{
-        display: block !important;
-    }
+   .menu-control {
+       display: block !important;
+   }
 
     .ant-menu{
         position: absolute;

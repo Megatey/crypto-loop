@@ -9,7 +9,7 @@ import {createApi , fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 
 
-// const createRequest = (url) => ({url})
+// const createRequest = (url) => ({url, header})
 
 export const cryptoApi = createApi({
     reducerPath: 'cryptoApi',
@@ -27,7 +27,7 @@ export const cryptoApi = createApi({
             query: ({coinId, timePeriod}) => `coin/${coinId}/history?timeperiod=${timePeriod}`
         }),
         getExchanges: builder.query({
-            query: () => '/exchanges',
+            query: () => `exchanges`,
           }),
     })
 });

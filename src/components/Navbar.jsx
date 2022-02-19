@@ -32,12 +32,12 @@ const Navbar = () => {
                 <Typography.Title level={2} className="logo">
                 <Link to="/">Cryptoloop</Link>
                 </Typography.Title>
-                {/* <Button claasName="menu-control-container" onClick={() => setActiveMenu(!activeMenu)}>
+                <Button className="menu-control" onClick={() => setActiveMenu(!activeMenu)}>
                     <MenuOutlined/>
-                </Button> */}
+                </Button>
             </div>
-            {activeMenu && (
-            <Menu theme='dark'>
+         
+           { activeMenu && <Menu theme='dark'>
                 <Menu.Item icon={<HomeOutlined />}>
                 <Link to="/">Home</Link>
                 </Menu.Item>
@@ -50,9 +50,8 @@ const Navbar = () => {
                 <Menu.Item icon={<BulbOutlined />}>
                 <Link to="/news">News</Link>
                 </Menu.Item>
-            </Menu>
-            )}
-            
+            </Menu>}
+
         </div>
     );
 };

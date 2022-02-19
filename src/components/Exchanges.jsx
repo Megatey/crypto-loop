@@ -9,10 +9,13 @@ const { Text } = Typography;
 const { Panel } = Collapse;
 
 const Exchanges = () => {
-  const { data, isFetching } = useGetExchangesQuery();
-  const exchangesList = data?.data?.exchanges;
+  const { data, isLoading } = useGetExchangesQuery();
+  const exchangesList = data?.exchanges;
 
-  if(isFetching) return 'Loading....'
+  if(isLoading) return 'Loading....'
+
+  console.log(exchangesList);
+  // console.log(data);
   return (
   <>
         <Row>
@@ -21,7 +24,7 @@ const Exchanges = () => {
         <Col span={6}>Markets</Col>
         <Col span={6}>Change</Col>
       </Row>
-      <Row>
+      {/* <Row>
         {exchangesList.map((exchange) => (
           <Col span={24}>
             <Collapse>
@@ -46,7 +49,7 @@ const Exchanges = () => {
             </Collapse>
           </Col>
         ))}
-      </Row>
+      </Row> */}
   </>
   );
 };
