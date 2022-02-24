@@ -13,9 +13,10 @@ const Homepage = () => {
 
   const {data} = useGetCryptosQuery(10);
   // if (isLoading) return 'Loading....'
-  if (!data) return 'Loading.....'
+  // if (!data) return 'Loading.....'
   console.log(data);
   const globalStats = data.data.stats
+  if (!globalStats) return 'Loading...'
 
   return (
  <>
