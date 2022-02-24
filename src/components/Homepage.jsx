@@ -11,7 +11,7 @@ const {Title} = Typography
 
 const Homepage = () => {
 
-  const {data} = useGetCryptosQuery(10);
+  const {data, isLoading} = useGetCryptosQuery(10);
   if (isLoading) return 'Loading....'
   // if (!data) return 'Loading.....'
   console.log(data);
