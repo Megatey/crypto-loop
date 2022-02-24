@@ -19,6 +19,7 @@ const News = ({simplified}) => {
   console.log(cryptoNews);
   if (!cryptoNews?.value) return 'Loading...'
   return (
+    <>
   <Row gutter={[24, 24]}>
     {!simplified && (
       <Col span={24}>
@@ -60,6 +61,7 @@ const News = ({simplified}) => {
         </Col>
       ))}
   </Row>
+  </>
   );
 };
 
