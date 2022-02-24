@@ -20,7 +20,7 @@ const Cryptocurrencies = ({simplified}) => {
   }, [cryptosList, searchTerm])
 
   // if (isLoading) return 'Loading....'
-  if (!cryptosList?.data) return 'Loading...'
+  if (!cryptosList?.data?.coins) return 'Loading...'
 
   return (
   <>
