@@ -6,24 +6,38 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 
 const Cryptocurrencies = ({simplified}) => {
   const count = simplified ? 10 : 100
-  const {data: cryptosList, isLoading} = useGetCryptosQuery(count)
+  // const {data: cryptosList, isLoading} = useGetCryptosQuery(count)
+  const [cryptosList, setCryptosList] = useState()
   const [cryptos, setCryptos] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
-  console.log(cryptos);
+
+  const getCoinList = async () => {
+      try {
+        const res = await fetch(`https://cryptoloop-serverside.vercel.app?url=https://api.coinranking.com/v2/coins?limit=${count}`)
+        const output = await res.json()
+        console.log(output.data.data.coins);
+        setCryptosList(output)
+      }
+      catch (error) {
+        console.log(error);
+      }
+  }
 
   useEffect(() => {
+    getCoinList()
 
-      const filteredData = cryptosList?.data?.coins.filter((coin) => coin.name.toLowerCase().includes(searchTerm.toLowerCase()))
+      const filteredData = cryptosList?.data?.data?.coins.filter((coin) => coin.name.toLowerCase().includes(searchTerm.toLowerCase()))
 
     setCryptos(filteredData)
 
   }, [cryptosList, searchTerm])
 
   // if (isLoading) return 'Loading....'
-  if (!cryptosList?.data?.coins) return 'Loading...'
+  // if (!cryptosList?.data?.coins) return 'Loading...'
 
   return (
   <>
+  {!cryptosList ? <h4>Loading....</h4> : <div>
     {!simplified && (
       <div className="search-crypto">
         <Input placeholder='Search Cryptocurrency' onChange={(e) => setSearchTerm(e.target.value)}/>
@@ -46,6 +60,7 @@ const Cryptocurrencies = ({simplified}) => {
             </Col>
           ))}
       </Row>
+      </div>}
   </>
   );
 };
