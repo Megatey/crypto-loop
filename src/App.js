@@ -1,35 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Routes, Route, Link} from 'react-router-dom';
 import {Layout, Typography, Space} from 'antd';
 
 import {Navbar, Exchanges, Homepage, Cryptocurrencies, CryptoDetails, News} from './components'
 import './App.css';
-// import { useEffect } from 'react';
 
 const App = () => {
-
-  // const [globalStats, setGlobalStats] = useState()
-
-
-  // const count = simplified ? 10 : 100
-
-  // const callApi = async () => {
-  //   try {
-  //       const res = await fetch(`https://cryptoloop-serverside.vercel.app?url=https://api.coinranking.com/v2/coins`)
-  //       const data = await res.json()
-  //       console.log(data.data.data.stats)
-  //       setGlobalStats(data.data.data.stats)
-  //   }
-  //   catch (error) {
-  //     console.log(error);
-  //   }
-  // }
-
-
-  // useEffect(() => {
-  //   // getCoinDetails()
-  //   callApi()
-  // }, [])
   return (
     <div className="app">
       <div className="navbar">

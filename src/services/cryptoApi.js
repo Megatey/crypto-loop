@@ -14,7 +14,7 @@ import {createApi , fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 export const cryptoApi = createApi({
     reducerPath: 'cryptoApi',
     baseQuery: fetchBaseQuery({
-        baseUrl : 'https://api.coinranking.com/v2/'
+        baseUrl : 'https://cryptoloop-serverside.vercel.app?url=https://api.coinranking.com/v2/'
     }),
     endpoints: (builder) => ({
         getCryptos: builder.query({

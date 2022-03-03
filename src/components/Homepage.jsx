@@ -1,8 +1,8 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import millify from 'millify'
 import {Typography, Row, Col, Statistic} from 'antd'
 import {Link} from 'react-router-dom'
-// import { useGetCryptosQuery } from '../services/cryptoApi';
+import { useGetCryptosQuery } from '../services/cryptoApi';
 import axios from "axios";
 import {Cryptocurrencies, News} from '../components'
 
@@ -10,30 +10,15 @@ import {Cryptocurrencies, News} from '../components'
 const {Title} = Typography
 
 const Homepage = () => {
-
-  // const [data, setData] = useState()
-  const [globalStats, setGlobalStats] = useState()
-
-  const callApi = async () => {
-    try {
-        const res = await fetch(`https://cryptoloop-serverside.vercel.app?url=https://api.coinranking.com/v2/coins`)
-        const data = await res.json()
-        console.log(data.data.data.stats)
-        setGlobalStats(data.data.data.stats)
-    }
-    catch (error) {
-      console.log(error);
-    }
-  }
-
-    useEffect(() => {
-    callApi()
-  },[])
+  const {data, isLoading} = useGetCryptosQuery(10)
+  if(isLoading) return 'Loading...'
+  console.log(data.data.data.stats);
+  const globalStats = data.data.data.stats
   
 
   return (
  <>
-  { !globalStats ? <h4>Loading......</h4> : <div> <Title level={2} className='heading'>Global Crypto Stats</Title>
+    <Title level={2} className='heading'>Global Crypto Stats</Title>
     <Row>
         <Col span={12}><Statistic title="Total Cryptocurrencies" value={globalStats.totalCoins}/></Col>
         <Col span={12}><Statistic title="Total Exchanges" value={millify(globalStats.totalExchanges)}/></Col>
@@ -51,8 +36,6 @@ const Homepage = () => {
       <Title level={3} className="show-more"><Link to="/news">Show More</Link></Title>
     </div>
     <News simplified/>
-    </div>
-    }
  </>
   );
 };
